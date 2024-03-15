@@ -4,7 +4,7 @@
 GPU = '0'                   # GPU
 workers = 4                 # number of Dataloader workers
 epochs = 160                # number of epochs
-batch_size = 12             # batch size
+batch_size = 4             # batch size
 learning_rate = 1e-3        # initial learning rate
 
 ##################################################
@@ -18,10 +18,10 @@ beta = 5e-2                 # param for update feature centers
 ##################################################
 # Dataset/Path Config
 ##################################################
-tag = 'bird'                # 'aircraft', 'bird', 'car', or 'dog'
+tag = 'aircraft'                # 'aircraft', 'bird', 'car', or 'dog'
 
 # saving directory of .ckpt models
-save_dir = './FGVC/CUB-200-2011/ckpt/'
+save_dir = './FGVC/aircraft/ckpt/'
 model_name = 'model.ckpt'
 log_name = 'train.log'
 
@@ -34,4 +34,4 @@ ckpt = False
 ##################################################
 visualize = True
 eval_ckpt = save_dir + model_name
-eval_savepath = './FGVC/CUB-200-2011/visualize/'
+eval_savepath = './FGVC/aircraft/visualize/'

@@ -6,9 +6,12 @@ import os
 import pdb
 from PIL import Image
 from torch.utils.data import Dataset
+
+import sys 
+sys.path.append("F:\paper_code\WS-DAN.PyTorch") 
 from utils import get_transform
 
-DATAPATH = '/home/guyuchong/DATA/FGVC/FGVC-Aircraft/data'
+DATAPATH = r'F:\paper_code\fgvc-aircraft-2013b\data'
 FILENAME_LENGTH = 7
 
 

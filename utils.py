@@ -63,7 +63,8 @@ class TopKAccuracyMetric(Metric):
         correct = pred.eq(target.view(1, -1).expand_as(pred))
 
         for i, k in enumerate(self.topk):
-            correct_k = correct[:k].view(-1).float().sum(0)
+            # correct_k = correct[:k].view(-1).float().sum(0)
+            correct_k = correct[:k].contiguous().view(-1).float().sum(0)
             self.corrects[i] += correct_k.item()
 
         return self.corrects * 100. / self.num_samples
@@ -189,7 +190,7 @@ def batch_augment(images, attention_map, mode='crop', theta=0.5, padding_ratio=0
 def get_transform(resize, phase='train'):
     if phase == 'train':
         return transforms.Compose([
-            transforms.Resize(size=(int(resize[0] / 0.875), int(resize[1] / 0.875))),
+            transforms.Resize(size=(int(int(resize[0]) / 0.875), int(int(resize[1]) / 0.875))),
             transforms.RandomCrop(resize),
             transforms.RandomHorizontalFlip(0.5),
             transforms.ColorJitter(brightness=0.126, saturation=0.5),
